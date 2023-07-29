@@ -36,24 +36,12 @@ const today = new Date();
 		</a>
 	</div>
 </footer>
-<style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
-</style>
+<script>
+
+	// Check if user preference is dark theme
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	// Update data-theme attribute to "synthwave"
+	document.documentElement.setAttribute('data-theme', 'synthwave');
+  }
+  
+  </script>
