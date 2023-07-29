@@ -6,15 +6,15 @@ module.exports = {
 		  {
 			mytheme: {
 			
-   "primary": "#1565C0",
+   "primary": "#EC407A",
 			
-   "secondary": "#EC407A",
+   "secondary": "#1565C0",
 			
-   "accent": "#26A694",
+   "accent": "#90CAF9",
 			
    "neutral": "#191D24",
 			
-   "base-100": "#90CAF9",
+   "base-100": "#fecdd3",
 			},
 		  },
 	"synthwave",
