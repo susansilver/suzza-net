@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import Hero from '../components/Hero.astro';
+import HeroIndex from '../components/HeroIndex.astro';
 ---
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ import Hero from '../components/Hero.astro';
 	<body style="font-family:'inter',Arial, 'Helvetica Neue', Helvetica, sans-serif;">
 		<Header title={SITE_TITLE} />
 
-		<Hero />
+		<HeroIndex />
 		
 		<div class="mx-auto grid grid-cols-12 mt-3">
 			

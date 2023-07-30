@@ -19,9 +19,9 @@ const currentPath = pathname.slice(1); // remove
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
 			  </label>
 			</div> 
-			<div class="flex-1 px-2 mx-2">
+			<div class="flex-1 px-2 mx-2 gap-2">
 				<Image src={logo} alt="logo image" class="h-12 w-12" format="avif" quality="mid" />
-				<h2 style="font-family: 'megrim', sans-serif;" class="text-2xl"><a href="/">{SITE_TITLE}</a></h2>
+				<h2 style="font-family: 'megrim', sans-serif;" class="md:text-2xl"><a href="/">{SITE_TITLE}</a></h2>
 			</div>
 			<div class="flex-none hidden lg:block">
 			  <ul class="menu menu-horizontal">
@@ -33,7 +33,7 @@ const currentPath = pathname.slice(1); // remove
 			</div>
 		  </div>
 		</div> 
-		<div class="drawer-side">
+		<div class="drawer-side z-10">
 		  <label for="my-drawer-3" class="drawer-overlay"></label> 
 		  <ul class="menu p-4 w-80 bg-base-100 h-screen">
 			<!-- Sidebar content here -->
