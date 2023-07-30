@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Hero from '../components/Hero.astro';
 ---
 
 <!DOCTYPE html>
@@ -12,10 +13,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body style="font-family:'inter',Arial, 'Helvetica Neue', Helvetica, sans-serif;">
 		<Header title={SITE_TITLE} />
+
+		<Hero />
+		
 		<div class="mx-auto grid grid-cols-12 mt-3">
 			
 			<div class="dark:prose-invert prose prose-slate prose-xl md:prose-lg col-span-10 col-start-2 col-end-12 md:col-span-6  md:col-start-4 md:col-end-10 mx-auto">
-		<main>
+				<main>
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
