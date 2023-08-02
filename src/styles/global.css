@@ -13,8 +13,8 @@
   }
   
   @font-face {
-      font-family: 'megrim';
-      src: url('/fonts/megrim-v16-latin-regular.woff2') format('woff2');
+      font-family: 'bebas';
+      src: url('/fonts/bebas-neue-v10-latin-regular.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
