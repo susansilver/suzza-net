@@ -675,21 +675,9 @@ html {
 }
 
 @font-face {
-  font-family: 'inter';
-
-  src: url('/fonts/inter-v12-latin-regular.woff2') format('woff2');
-
-  font-weight: normal;
-
-  font-style: normal;
-
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'bebas';
 
-  src: url('/fonts/bebas-neue-v10-latin-regularwoff2') format('woff2');
+  src: url('/fonts/bebas-neue-v10-latin-regular.woff2') format('woff2');
 
   font-weight: normal;
 
@@ -3097,6 +3085,11 @@ html {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
