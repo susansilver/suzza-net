@@ -19,15 +19,15 @@ const posts = (await getCollection('blog')).sort(
 	</head>
 	<body style="font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
 		<Header />
-		<div class="mx-auto grid grid-cols-12">
+		<div class="mx-auto flex flex-col md:grid md:grid-cols-12">
 			
-			<div class="dark:prose-invert prose prose-slate prose-xl md:prose-lg col-span-10 col-start-2 col-end-12 md:col-span-6  md:col-start-4 md:col-end-10 mx-auto">
+			<div class="dark:prose-invert prose prose-slate prose-xl md:prose-lg md:col-span-9  mx-auto">
 		<main>
 			<section>
-				<ul>
+				
 					{
 						posts.map((post) => (
-							<li>
+							
 								<a href={`/blog/${post.slug}/`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
@@ -35,12 +35,17 @@ const posts = (await getCollection('blog')).sort(
 										<FormattedDate date={post.data.pubDate} />
 									</p>
 								</a>
-							</li>
+							
 						))
 					}
-				</ul>
+				
 			</section>
 		</main>
+		</div>
+		<div class="md:col-span-3">
+			<aside>
+				Text
+			</aside>
 		</div>
 		</div>
 		<Footer />
