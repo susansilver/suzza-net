@@ -30,7 +30,7 @@ const { params } = Astro;
 ---
     <html lang="en">
 	<head>
-		<BaseHead title="title" description="test'" />
+		<BaseHead title={(params.category.toLowerCase().replace('-', ' '))} description={`Category archive for ${params.category.replace('-', ' ')}`} />
 	</head>
     <body>
 		<Header />
