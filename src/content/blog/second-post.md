@@ -4,7 +4,7 @@ description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2022'
 heroImage: '../../assets/blog-placeholder-4.jpg'
 alt: 'text'
-category: 'Quote'
+category: "quote"
 link: ''
 ---
 

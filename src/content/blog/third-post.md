@@ -4,7 +4,7 @@ description: 'Every Day I Love You Less And Less - Kaiser Chiefs'
 pubDate: 'Jul 15 2022'
 heroImage: '../../assets/Employment_kaiser_chiefs.jpg'
 alt: 'text'
-category: 'Audio'
+category: "audio"
 link: 'https://www.youtube.com/watch?v=xAkg4cwJp1Y'
 ---
 

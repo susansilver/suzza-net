@@ -4,7 +4,7 @@ description: 'Here is a sample of some basic Markdown syntax that can be used wh
 pubDate: 'Jul 01 2022'
 heroImage: '../../assets/blog-placeholder-3.jpg'
 alt: 'Text'
-category: 'Post'
+category: "post"
 link: ''
 ---
 
