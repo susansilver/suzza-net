@@ -4,10 +4,11 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets'
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, alt } = Astro.props;
 ---
 
 <html lang="en">
@@ -15,7 +16,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 	</head>
 
-	<body style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+	<body>
 		<Header />
 		<div class="mx-auto grid grid-cols-12">
 			
@@ -23,7 +24,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <Image src={heroImage} alt={alt} format="avif" quality="mid" />}
 				</div>
 				<div class="prose">
 					<div class="title">

@@ -1,0 +1,166 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Pagination from '../../components/Pagination.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { Image } from 'astro:assets'
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection('blog');
+  return paginate(allPosts, { pageSize: 3 });
+}
+
+const { page } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+	</head>
+	<body>
+		<Header />
+		<div class="mx-auto flex flex-col md:grid md:grid-cols-12">
+			
+			<div class="dark:prose-invert prose prose-slate prose-xl md:prose-lg md:col-span-9  mx-auto">
+		<main>
+			<section>
+				{
+					page.data.map((post) => (
+					  <div class="m-5">
+						{post.data.category === 'Links' && (
+						  <div class="card w-150 bg-base-200 shadow-xl rounded-xl">
+							<a href={post.data.link} target="_blank"><h2 class="card-title flex justify-center" style="text-wrap: balance;">{post.data.title}</h2></a>
+							<div class="divider"></div>
+							<div class="card-body">
+								<div class="badge badge-secondary">Link</div>
+							  <p>{post.data.description}</p>
+							</div>
+						  </div>
+						)}
+						{post.data.category === 'Quote' && (
+						  <div class="card-body bg-base-200 w-150 rounded-xl">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 fill-secondary relative top-2 left-2 my-2" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z"></path></svg>
+							<div class="badge badge-secondary">Quote</div>
+							<p>{post.data.description}</p>
+						  </div>
+						)}
+						{post.data.category === 'Text' && (
+						  <div class="card-body bg-accent text-accent-content w-150 rounded-xl">
+							<p>{post.data.description}</p>
+						  </div>
+						)}
+						{post.data.category === 'Announcement' && (
+						<div class="card-body bg-primary w-150 text-black rounded-xl" data-theme="night">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 fill-black relative top-2 left-2 my-2" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M20.664 3.478 8 8v7l.748.267-1.127 2.254a1.999 1.999 0 0 0 1.156 2.792l4.084 1.361a2.015 2.015 0 0 0 2.421-1.003l1.303-2.606 4.079 1.457A1 1 0 0 0 22 18.581V4.419a1 1 0 0 0-1.336-.941zm-7.171 16.299L9.41 18.416l1.235-2.471 4.042 1.444-1.194 2.388zM4 15h2V8H4c-1.103 0-2 .897-2 2v3c0 1.103.897 2 2 2z"></path></svg>
+							<div class="badge badge-accent">Announcement</div>
+							<p>{post.data.description}</p>
+						  </div>
+						)}
+						{post.data.category === 'Audio' && (
+						  <div class="w-150 shadow-xl bg-base-200 rounded-xl">
+							<Image src={post.data.heroImage} alt={post.data.alt} format="avif" quality="mid" class="w-full" />
+							<div class="card-body">
+								<div class="badge badge-secondary">Audio</div>
+							  <h3 style="text-wrap: balance;"><a href={post.data.link} target="_blank">{post.data.description}</a></h3>
+							</div>
+						  </div>
+						)}
+						{post.data.category === 'Image' && (
+							<div class="w-150 shadow-xl bg-base-200 rounded-xl">
+  								<figure><Image src={post.data.heroImage} alt={post.data.alt} format="avif" quality="mid"/></figure>
+ 								 <div class="card-body">
+									<div class="badge badge-secondary">Image</div>
+  									<p>{post.data.description}</p>
+ 								 </div>
+							</div>
+						)}	
+						{post.data.category === 'Post' && (
+							<div class="w-150 bg-base-200 shadow-xl rounded-xl">
+  								<div class="card-body">
+									<div class="badge badge-secondary">Blog</div>
+										<a href={`/blog/${post.slug}/`}> <h2 class="card-title" style="text-wrap: balance;">{post.data.title}</h2></a>
+ 									 </div>
+  									<figure><Image src={post.data.heroImage} alt={post.data.alt} format="avif" quality="mid"/></figure>
+								</div>
+						)}
+					  </div>
+					))
+				  }
+
+<div class="flex justify-center m-5">
+
+	<Pagination
+	firstPage={page.url.prev ? '/blog' : null}
+	previousPage={page.url.prev ? page.url.prev : null}
+	nextPage={page.url.next ? page.url.next : null}
+	lastPage={page.url.next ? `/blog/${Math.round(page.total / page.size)}` : null}
+	currentPage={page.currentPage}
+	totalPages={Math.round(page.total / page.size)}
+  />
+  </div>
+				  
+			</section>
+		</main>
+		</div>
+		<div class="md:col-span-3 mx-10">
+			<aside>
+				<div class="card w-150 bg-base-200 shadow-xl rounded-xl my-10">
+					<h2 class="card-title flex justify-center" style="text-wrap: balance;">Categories</h2>
+					<div class="divider"></div>
+					<div class="card-body">
+						<ul>
+							<li>Announcements</li>
+							<li>Audio Clips</li>
+							<li>Images</li>
+							<li>Links</li>
+							<li>Posts</li>
+							<li>Quotes</li>
+							<li>Texts</li>
+						</ul>
+					</div>
+				 </div>
+				 <div class="card w-150 bg-base-200 shadow-xl rounded-xl my-10">
+					<h2 class="card-title flex justify-center" style="text-wrap: balance;">Subscribe via RSS</h2>
+					<div class="divider"></div>
+					<div class="card-body">
+						<ul>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> All</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Announcements</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Audio Clips</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Images</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Links</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Posts</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Quotes</span></li>
+							<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> Texts</span></li>
+						</ul>
+					</div>
+				 </div>
+				 <div class="card w-150 bg-base-200 shadow-xl rounded-xl my-10">
+					<h2 class="card-title flex justify-center" style="text-wrap: balance;">Blog Roll</h2>
+					<div class="divider"></div>
+					<div class="card-body">
+						<ul>
+							<li><a href="https://suzza.net" class="underline">Subscribe to Newsletter</a></li>
+							<li><a href="https://beautyofmathematics.com" class="underline">Beauty of Mathematics</a></li>
+							<li><a href="https://suzza-silver.notion.site/suzza-silver/Epic-List-of-Math-Communicators-d2fee910dc5c4b92bb9f439c6ffd9550" class="underline">Math Comm Resources</a></li>
+							<li><a href="https://fancycomma.com/category/uncategorized/author/suzza-silver/" class="underline">Fancy Comma</a></li>
+							<li><a href="https://aperiodical.com/" class="underline">The Aperiodical</a></li>
+						</ul>
+					</div>
+				 </div>
+			</aside>
+		</div>
+		</div>
+		<Footer />
+	</body>
+</html>
+
