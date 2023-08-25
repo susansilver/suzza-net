@@ -20,7 +20,7 @@ const { title, description, pubDate, updatedDate, heroImage, alt } = Astro.props
 		<Header />
 		<div class="mx-auto grid grid-cols-12">
 			
-			<div class="dark:prose-invert prose prose-slate prose-xl md:prose-lg col-span-10 col-start-2 col-end-12 md:col-span-6  md:col-start-4 md:col-end-10 mx-auto">
+			<div class="dark:prose-invert prose prose-slate prose-xl md:prose-lg md:col-span-9  mx-auto">
 		<main>
 			<article>
 				<div class="hero-image">
@@ -45,7 +45,56 @@ const { title, description, pubDate, updatedDate, heroImage, alt } = Astro.props
 				</div>
 			</article>
 		</main>
-			</div>
+	</div>
+	<div class="md:col-span-3 mx-10">
+		<aside>
+			<div class="card w-150 bg-base-200 shadow-xl rounded-xl my-10">
+				<h2 class="card-title flex justify-center" style="text-wrap: balance;">Categories</h2>
+				<div class="divider"></div>
+				<div class="card-body">
+					<ul>
+						<li><a href="/category/announcement">Announcements</a></li>
+						<li><a href="/category/audio">Audio Clips</a></li>
+						<li><a href="/category/image">Images</a></li>
+						<li><a href="/category/links">Links</a></li>
+						<li><a href="/category/post">Posts</a></li>
+						<li><a href="/category/quote">Quotes</a></li>
+						<li><a href="/category/text">Texts</a></li>
+					</ul>
+				</div>
+			 </div>
+			 <div class="card w-150 bg-base-200 shadow-xl rounded-xl my-10">
+				<h2 class="card-title flex justify-center" style="text-wrap: balance;">Subscribe via RSS</h2>
+				<div class="divider"></div>
+				<div class="card-body">
+					<ul>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg><a href="/rss.xml">All</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> <a href="/announcement.xml">Announcements</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> <a href="/audio.xml">Audio Clips</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg><a href="/image.xml">Images</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> <a href="/links.xml">Links</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> <a href="/post.xml">Posts</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> <a href="/quote.xml">Quotes</a></span></li>
+						<li><span class="flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-secondary" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg> <a href="/text.xml">Texts</a></span></li>
+					</ul>
+				</div>
+			 </div>
+			 <div class="card w-150 bg-base-200 shadow-xl rounded-xl my-10">
+				<h2 class="card-title flex justify-center" style="text-wrap: balance;">Blog Roll</h2>
+				<div class="divider"></div>
+				<div class="card-body">
+					<ul>
+						<li><a href="https://suzza.net">Subscribe to Newsletter</a></li>
+						<li><a href="https://beautyofmathematics.com">Beauty of Mathematics</a></li>
+						<li><a href="https://suzza-silver.notion.site/suzza-silver/Epic-List-of-Math-Communicators-d2fee910dc5c4b92bb9f439c6ffd9550">Math Comm Resources</a></li>
+						<li><a href="https://fancycomma.com/category/uncategorized/author/suzza-silver/">Fancy Comma</a></li>
+						<li><a href="https://aperiodical.com/">The Aperiodical</a></li>
+					</ul>
+				</div>
+			 </div>
+		</aside>
+	</div>
+	</div>
 			</div>
 		<Footer />
 	</body>
