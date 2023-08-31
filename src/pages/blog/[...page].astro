@@ -31,7 +31,7 @@ const { page } = Astro.props;
 		<main>
 			<section>
 				{
-					page.data.map((post) => (
+					page.data.flatMap((post) => (
 					  <div class="m-5">
 						{post.data.category === 'links' && (
 						  <div class="card w-150 bg-base-200 shadow-xl rounded-xl">

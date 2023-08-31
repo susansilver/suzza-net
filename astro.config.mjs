@@ -6,9 +6,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: {
-   assets: true
-  },
   site: 'https://suzza.net',
   integrations: [mdx(), sitemap(), tailwind()]
 });
