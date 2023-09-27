@@ -71,12 +71,13 @@ const { params } = Astro;
 						<div class="card-body bg-primary w-150 text-black rounded-xl" data-theme="night">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 fill-black relative top-2 left-2 my-2" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M20.664 3.478 8 8v7l.748.267-1.127 2.254a1.999 1.999 0 0 0 1.156 2.792l4.084 1.361a2.015 2.015 0 0 0 2.421-1.003l1.303-2.606 4.079 1.457A1 1 0 0 0 22 18.581V4.419a1 1 0 0 0-1.336-.941zm-7.171 16.299L9.41 18.416l1.235-2.471 4.042 1.444-1.194 2.388zM4 15h2V8H4c-1.103 0-2 .897-2 2v3c0 1.103.897 2 2 2z"></path></svg>
 							<div class="badge badge-accent">Announcement</div>
+							<p>{post.data.updatedDate}</p>
 							<p>{post.data.description}</p>
 						  </div>
 						)}
 						{post.data.category === 'audio' && (
 						  <div class="w-150 shadow-xl bg-base-200 rounded-xl">
-							<Image src={post.data.heroImage} alt={post.data.alt} format="avif" quality="mid" class="w-full" />
+							<Image src={post.data.heroImage.src} alt={post.data.heroImage.alt} format="avif" quality="mid" class="w-full" />
 							<div class="card-body">
 								<div class="badge badge-secondary">Audio</div>
 							  <h3 style="text-wrap: balance;"><a href={post.data.link} target="_blank">{post.data.description}</a></h3>
@@ -85,7 +86,7 @@ const { params } = Astro;
 						)}
 						{post.data.category === 'image' && (
 							<div class="w-150 shadow-xl bg-base-200 rounded-xl">
-  								<figure><Image src={post.data.heroImage} alt={post.data.alt} format="avif" quality="mid"/></figure>
+  								<figure><Image src={post.data.heroImage.src} alt={post.data.heroImage.alt} format="avif" quality="mid"/></figure>
  								 <div class="card-body">
 									<div class="badge badge-secondary">Image</div>
   									<p>{post.data.description}</p>
@@ -97,8 +98,9 @@ const { params } = Astro;
   								<div class="card-body">
 									<div class="badge badge-secondary">Blog</div>
 										<a href={`/blog/${post.slug}/`}> <h2 class="card-title" style="text-wrap: balance;">{post.data.title}</h2></a>
+										<p>{post.data.updatedDate}</p>
  									 </div>
-  									<figure><Image src={post.data.heroImage} alt={post.data.alt} format="avif" quality="mid"/></figure>
+  									<figure><Image src={post.data.heroImage.src} alt={post.data.heroImage.alt} format="avif" quality="mid"/></figure>
 								</div>
 						)}
 					  </div>

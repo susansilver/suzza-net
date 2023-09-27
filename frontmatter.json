@@ -1,21 +1,34 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "blog",
+      "path": "[[workspace]]/src/content/blog"
+    }
+  ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
       "pageBundle": false,
       "previewPath": null,
       "filePrefix": null,
+      "fileType": "md",
       "fields": [
         {
-          "title": "Title",
+          "title": "title",
           "name": "title",
           "type": "string"
         },
         {
-          "title": "Description",
+          "title": "description",
           "name": "description",
           "type": "string"
+        },
+        {
+          "title": "draft",
+          "name": "draft",
+          "type": "boolean",
+          "default": true
         },
         {
           "title": "pubDate",
@@ -25,33 +38,51 @@
           "isPublishDate": true
         },
         {
-          "title": "heroImage",
-          "name": "heroImage",
-          "type": "image"
+          "title": "updatedDate",
+          "name": "updatedDate",
+          "type": "datetime",
+          "dateFormat": "MMMM do, Y",
+          "default": "{{now}}",
+          "isModifiedDate": true
         },
         {
-          "title": "alt",
-          "name": "alt",
-          "type": "string"
+          "title": "Hero Image",
+          "type": "fields",
+          "name": "heroImage",
+          "fields": [
+            {
+              "title": "Alt",
+              "name": "alt",
+              "type": "string"
+            },
+            {
+              "title": "Src",
+              "name": "src",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "title": "Categories",
+          "name": "categories",
+          "type": "choice",
+          "choices": [
+            "announcement",
+            "audio",
+            "image",
+            "links",
+            "post",
+            "quote",
+            "text"
+          ],
+          "default": "links"
         },
         {
           "title": "link",
           "name": "link",
           "type": "string"
-        },
-        {
-          "title": "category",
-          "name": "category",
-          "type": "string"
         }
       ]
-    }
-  ],
-  "frontMatter.framework.id": "astro",
-  "frontMatter.preview.host": "http://localhost:4321/blog/",
-  "frontMatter.content.pageFolders": [
-    {
-      "path": "[[workspace]]/src/content/blog"
     }
   ]
 }
