@@ -3,12 +3,56 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "blog",
-      "path": "[[workspace]]/src/content/blog"
+      "path": "[[workspace]]/src/content/blog",
+      "contentTypes": [
+        "articles"
+      ]
+    },
+    {
+      "title": "pages",
+      "path": "[[workspace]]/src/pages",
+      "contentTypes": [
+        "pages"
+      ]
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
-      "name": "default",
+      "name": "pages",
+      "pageBundle": false,
+      "previewPath": null,
+      "filePrefix": null,
+      "fileType": "md",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Publishing date",
+          "name": "pubDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Modified date",
+          "name": "updatedDate",
+          "type": "datetime",
+          "dateFormat": "MMMM do, Y",
+          "default": "{{now}}",
+          "isModifiedDate": true
+        }
+      ]
+    },
+    {
+      "name": "articles",
       "pageBundle": false,
       "previewPath": null,
       "filePrefix": null,
